@@ -5,6 +5,7 @@ import useCart from '../hooks/useCart';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+
     const menuList = <>
     <NavLink to='/shop'>
       {({ isActive }) => (
@@ -26,7 +27,7 @@ const Navbar = () => {
               } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
             >
               Cart
-      
+            
             </li>
             
           )}
@@ -54,7 +55,7 @@ const Navbar = () => {
             </li>
           )}
       </NavLink>  */}
-      <NavLink to='/'>
+      <NavLink to='/login'>
     {({ isActive }) => (
           <li
             className={`${

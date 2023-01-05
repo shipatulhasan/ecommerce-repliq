@@ -3,13 +3,12 @@ import toast from 'react-hot-toast';
 import { addToDb, getCart } from '../utility/fakeDb';
 
 const useCart = () => {
-
     const [cart,setCart] = useState([])
-    // const [update,setUpdate] = useState(false)
+    const [update,setUpdate] = useState(false)
     useEffect(()=>{
         const savedCart = getCart()
         setCart(savedCart)
-    },[])
+    },[update])
 
     const handleAddToCart = (product)=>{
 
@@ -17,9 +16,9 @@ const useCart = () => {
         const myProduct = {
             name, price,image,id,quantity:1,user:'01819051432'
         }
-      
         addToDb(myProduct)
         toast.success('product added successfully')   
+        setUpdate(!update)
     }
     
     return {handleAddToCart,cart,setCart}
