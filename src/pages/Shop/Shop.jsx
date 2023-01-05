@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PageHeader from '../../component/PageHeader';
-import SingleProduct from '../SingleProduct/SingleProduct';
 import ProductsCard from './ProductsCard';
 import img from '../../assets/banner/banner.jpg'
 
-const Products = () => {
+const Shop = () => {
     const [products,setProducts] = useState([])
     const [isLoading,setIsLoading] = useState(true)
     useEffect(()=>{
@@ -14,13 +13,10 @@ const Products = () => {
             setIsLoading(false)
         })
     },[])
-    console.log(products)
+    
     return (
         <div>
             <PageHeader headerInfo={{img,title:'Shop'}} />
-            <div>
-
-            </div>
             <div className='px-5 py-10 md:px-10 md:py-20 space-y-8 max-w-screen-lg mx-auto'>
 
             {
@@ -31,4 +27,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default Shop;
