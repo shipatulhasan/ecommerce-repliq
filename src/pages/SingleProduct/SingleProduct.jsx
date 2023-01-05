@@ -1,28 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ErrorPage from "../../component/ErrorPage";
 import useCart from "../../hooks/useCart";
 
 const SingleProduct = () => {
   const [imgLoading, setImgLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  const { handleAddToCart } = useCart([])
+  const { handleAddToCart } = useCart()
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
   useEffect(() => {
     axios.get("products.json").then((res) => {
-      setProducts(res.data);
+      setProducts(res?.data);
       setIsLoading(false);
     });
   }, []);
+  if(isLoading){
+    return 
+  }
 
-  const product = products.find((p) => p.id === id);
-  
-if(isLoading){
-  return 
+const product = products?.find((p) => p.id === id);
+if(!product){
+  return <ErrorPage />
 }
-const {price,name,details} = product
   return (
     <div className="max-w-screen-lg mx-auto space-y-5">
 
@@ -42,8 +44,8 @@ const {price,name,details} = product
       <div className="space-y-5 ">
         <div>
           <div className="space-y-1">
-            <h3 className="text-2xl font-bold leading-snug sm:pr-8">{name}</h3>
-            <p className="text-xl font-bold text-fuchsia-800">${price}</p>
+            <h3 className="text-2xl font-bold leading-snug sm:pr-8">{product?.name}</h3>
+            <p className="text-xl font-bold text-fuchsia-800">${product?.price}</p>
           </div>
         </div>
         <div className="my-4 space-y-4 md:space-y-0 md:flex items-center gap-5">
@@ -61,7 +63,7 @@ const {price,name,details} = product
           <h2 className="text-xl font-bold ">Description</h2>
           <hr className=" border-gray-300 my-3 " />
 
-          <p className="text-sm text-gray-900">{details}</p>
+          <p className="text-sm text-gray-900">{product?.details}</p>
         </div>
     </div>
   );

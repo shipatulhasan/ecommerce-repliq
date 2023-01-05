@@ -4,7 +4,7 @@ import useCart from '../../hooks/useCart';
 
 const ProductsCard = ({product}) => {
     const [imgLoading,setImgLoading] = useState(false)
-    const { handleAddToCart } = useCart([])
+    const { handleAddToCart } = useCart()
     const {id,price,name,details} = product
     return (
         <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
