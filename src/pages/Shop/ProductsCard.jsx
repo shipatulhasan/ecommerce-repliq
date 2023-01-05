@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
 
 const ProductsCard = ({product}) => {
     const [imgLoading,setImgLoading] = useState(false)
+    const { handleAddToCart } = useCart([])
     const {id,price,name,details} = product
     return (
         <div className="grid gap-10 lg:grid-cols-2 items-center border border-slate-200 shadow-lg shadow-slate-200 p-5">
@@ -49,7 +51,7 @@ const ProductsCard = ({product}) => {
               </button>
               </Link>
               <button
-               
+               onClick={()=>handleAddToCart(product)}
                 className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-fuchsia-800 transition duration-200 shadow-md md:w-auto bg-fuchsia-200 hover:bg-fuchsia-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
               >
                 Add to cart

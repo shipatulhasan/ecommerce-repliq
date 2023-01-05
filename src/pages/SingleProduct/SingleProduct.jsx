@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const SingleProduct = () => {
   const [imgLoading, setImgLoading] = useState(false);
   const [products, setProducts] = useState([]);
+  const { handleAddToCart } = useCart([])
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
@@ -45,9 +47,12 @@ const {price,name,details} = product
           </div>
         </div>
         <div className="my-4 space-y-4 md:space-y-0 md:flex items-center gap-5">
-          <button className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-fuchsia-800 transition duration-200 shadow-md md:w-auto bg-fuchsia-200 hover:bg-fuchsia-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer">
-            Add to cart
-          </button>
+        <button
+               onClick={()=>handleAddToCart(product)}
+                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-fuchsia-800 transition duration-200 shadow-md md:w-auto bg-fuchsia-200 hover:bg-fuchsia-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
+              >
+                Add to cart
+              </button>
         </div>
       
       </div>
