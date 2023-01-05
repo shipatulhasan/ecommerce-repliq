@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast'
-import useCart from '../../hooks/useCart';
 import { removeFromDb } from '../../utility/fakeDb';
 import CartItem from './CartItem';
+import { CartContext } from '../../Layouts/Main';
 
 const Cart = () => {
-    const {cart,setCart} = useCart()
+    const [cart,setCart] = useContext(CartContext)
     let total = 0
     const handleRemoveItem = (product) => {
       const permission = window.confirm(`would you like to remove ${product.name}`)
@@ -20,9 +20,8 @@ const Cart = () => {
      
       }
       for(const product of cart){
-          total = total + (product?.price*product?.quantity)
+          total = total + (product?.price * product?.quantity)
       }
-      const checkout = {handleRemoveItem,total} 
     
     return (
         <div className='flex min-h-screen justify-center  text-gray-900'>

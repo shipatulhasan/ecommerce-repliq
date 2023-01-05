@@ -1,44 +1,40 @@
-
 // get cart form local storage
 
-const getCart = ()=>{
-    const storedCart = localStorage.getItem('shopping-cart')
-    let shoppingCart = []
-    if(shoppingCart){
-        shoppingCart = JSON.parse(storedCart)
-    }
-    return shoppingCart
+const getCart = () => {
+  const storedCart = localStorage.getItem("shopping-cart");
+  let shoppingCart = {};
+  if (shoppingCart) {
+    shoppingCart = JSON.parse(storedCart);
+  }
+  return shoppingCart;
+};
+
+// add item to local storage
+
+const addToDb = (id) => {
+  const storedCart = getCart();
+  //   check existing product
+  if (storedCart[id]) {
+    storedCart[id] = storedCart[id] + 1;
+  } else {
+    storedCart[id] = 1;
+  }
+
+  localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
+};
+// remove product from db
+const removeFromDb = (id) => {
+  const storedCart = getCart();
+  if (storedCart[id]) {
+    delete storedCart[id];
+  }
+  localStorage.setItem("shopping-cart", JSON.stringify(storedCart));
+};
+
+// romve full cart from localstorage
+
+const resetDb = ()=>{
+    localStorage.removeItem('shopping-cart')
 }
 
-
-// add cart to local storage
-
-const addToDb = product =>{
-    const storedCart = getCart()
-    let shoppingCart=[]
-    if(storedCart){
-        const existingProduct = storedCart.find(p=>p.id===product.id)
-        if(!existingProduct){
-            
-            shoppingCart = [...storedCart,product]
-        }else{
-            const restProduct = storedCart.filter(p=>p.id!==product.id)
-            existingProduct.quantity = existingProduct.quantity + 1
-            shoppingCart = [...restProduct,existingProduct]
-        }
-    }else{
-
-        shoppingCart=[product]
-    }
-    localStorage.setItem('shopping-cart',JSON.stringify(shoppingCart)) 
-}
-
-const removeFromDb = (id)=>{
-    const storedCart = getCart()
-    if(storedCart){
-        const remainingProduct = storedCart.filter(p=>p.id!==id)
-        localStorage.setItem('shopping-cart',JSON.stringify(remainingProduct))
-    }
-}
-
-export {addToDb,getCart,removeFromDb}
+export { addToDb, getCart, removeFromDb,resetDb };

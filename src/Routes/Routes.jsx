@@ -10,12 +10,14 @@ import Login from "../pages/Forms/Login";
 import SignUp from "../pages/Forms/SignUp";
 import Shop from "../pages/Shop/Shop";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
+import { productAndCartData } from "../utility/getProductandCart";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
         path:'/',
         errorElement:<ErrorPage />,
+        loader: productAndCartData ,
         element:<PrivateRoute><Main /></PrivateRoute>,
         children:[
             {

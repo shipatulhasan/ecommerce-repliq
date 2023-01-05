@@ -1,21 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import PageHeader from '../../component/PageHeader';
 import ProductsCard from './ProductsCard';
 import img from '../../assets/banner/banner.jpg'
-import { addToDb, getCart } from '../../utility/fakeDb';
-import useCart from '../../hooks/useCart';
+import { ProductContext } from '../../Layouts/Main';
 
 const Shop = () => {
-    const [products,setProducts] = useState([])
-    const [isLoading,setIsLoading] = useState(true)
+
+    const products = useContext(ProductContext)
     
-    useEffect(()=>{
-        axios.get('products.json').then(res=>{
-            setProducts(res.data)
-            setIsLoading(false)
-        })
-    },[])
+ 
     
     return (
         <div>

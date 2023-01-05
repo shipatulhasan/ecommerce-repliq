@@ -2,12 +2,15 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import brand from '../assets/brand/ecommerce-logo.png'
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import { CartContext } from '../Layouts/Main';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const {setStatus} = useContext(AuthContext)
+    const [cart] = useContext(CartContext)
     const handlelogout = ()=>{
       localStorage.removeItem("ecommerce-token")
+      localStorage.removeItem("shopping-cart")
       setStatus(false)
     }
 
@@ -29,10 +32,12 @@ const Navbar = () => {
             <li
               className={`${
                 isActive ? "bg-rose-200 " : 'border-opacity-0'
-              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300  lg:mt-0`}
+              } relative text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300  lg:mt-0`}
             >
               Cart
-            
+              <p className='absolute bottom-6 right-0 w-4 h-4 bg-rose-200 rounded-full grid place-content-center text-sm'>
+                            {cart?.length?cart?.length: '0'}
+                    </p>
             </li>
             
           )}
@@ -73,7 +78,7 @@ const Navbar = () => {
               eCommerce
             </span>
           </Link>
-          <ul className='flex items-center hidden space-x-8 lg:flex'>
+          <ul className='lg:flex items-center hidden  space-x-8'>
           {menuList}
           </ul>
           <div className='lg:hidden'>
@@ -99,7 +104,7 @@ const Navbar = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className='absolute top-0 left-0 w-full'>
+              <div className='absolute top-0 left-0 w-full z-10'>
                 <div className='p-5 bg-white border rounded shadow-sm'>
                   <div className='flex items-center justify-between mb-4'>
                     <div>
@@ -108,7 +113,7 @@ const Navbar = () => {
             title='eCommerce'
             className='inline-flex items-center'
           >
-          <img src={brand} alt="" />
+          <img src={brand} className='w-10 rounded-full' alt="" />
             <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
               eCommerce
             </span>
