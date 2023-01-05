@@ -16,8 +16,8 @@ const Navbar = () => {
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-red-200 " : 'border-opacity-0'
-              } text-rose-600 px-3 py-1 list-none lg:mr-2  font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
+                isActive ? "bg-rose-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2  font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300  lg:mt-0`}
             >
               Shop
             </li>
@@ -28,8 +28,8 @@ const Navbar = () => {
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-red-200 " : 'border-opacity-0'
-              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
+                isActive ? "bg-rose-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300  lg:mt-0`}
             >
               Cart
             
@@ -41,8 +41,8 @@ const Navbar = () => {
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-red-200 " : 'border-opacity-0'
-              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
+                isActive ? "bg-rose-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300  lg:mt-0`}
             >
               Dashboard
             </li>
@@ -52,7 +52,7 @@ const Navbar = () => {
  
           <li
           onClick={handlelogout}
-            className={`text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300 hover:bg-opacity-20 border-red-500 lg:mt-0 hover:cursor-pointer`}
+            className={`text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-rose-300 hover:bg-opacity-20 border-rose-500 lg:mt-0 hover:cursor-pointer`}
           >
             Logout
           </li>

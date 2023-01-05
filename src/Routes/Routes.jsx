@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../component/ErrorPage";
 import DashboardLayout from "../Layouts/Dashboard/DashboardLaout";
 import Main from "../Layouts/Main";
+import AddUser from "../pages/AdminPanel/AddUser";
 import Dashboard from "../pages/AdminPanel/Dashboard";
 import Cart from "../pages/Cart/Cart";
 import CheckOut from "../pages/CheckOut/CheckOut";
@@ -46,7 +47,11 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard',
                 element:<Dashboard />
-            }
+            },
+            {
+                path:'/dashboard/add-user',
+                element:<AddUser />
+            },
         ]
     },
     {

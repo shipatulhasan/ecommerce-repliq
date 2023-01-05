@@ -143,10 +143,17 @@ const Sidebar = () => {
           </svg>
         </div>
         <div className="px-8 my-5">
-          <Link to="/" className="w-2/3 mx-auto">
-            <img src={brand} alt="" />
+        <Link
+            to='/'
+            title='eCommerce'
+            className='inline-flex items-center'
+          >
+          <img src={brand} className='w-10 rounded-full' alt="" />
+            <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
+              eCommerce
+            </span>
           </Link>
-          <div className="mt-2">
+          <div className="mt-2 space-y-4">
           <Link to="/dashboard" className="flex items-center justify-center gap-0 mt-2">
             <div className="w-16 h-16 overflow-hidden border-2 ring-rose-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
               <img
@@ -156,11 +163,11 @@ const Sidebar = () => {
               />
             </div>
           </Link>
-          <div className="space-y-2">
-            <h2 className="text-center font-bold text-slate-800">
+          <div className="">
+            <h2 className="text-center  font-bold text-slate-800">
               Md. Shipatul Hasan
             </h2>
-            <p className="text-center font-bold text-slate-800">
+            <p className="text-center text-sm font-bold text-slate-800">
               shipatulhasan328@gmail.com
             </p>
           </div>
