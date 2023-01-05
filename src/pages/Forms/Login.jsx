@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -6,12 +6,11 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {setStatus} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { status, setStatus } = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
-  console.log(from)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,34 +18,37 @@ const Login = () => {
     const phone = form.phone.value;
     const pass = form.password.value;
     const user = {
-        phone,password:pass
-    }
-    fetch('http://localhost:5000/login',{
-            method:'put',
-            headers:{
-                "content-type":"application/json"
-            },
-            body:JSON.stringify(user)
-
-        })
-        .then(res=>{
-            if(res.status===400){
-                return toast.error('invalid credential',{duration:5000})
-            }
-            return res.json()
-        })
-        .then(data=>{
-          navigate(from, { replace: true });
-          toast.success('loggedin Successfully')
-          setStatus(true)
-          if(data.token){
-              localStorage.setItem('ecommerce-token',data.token)
-              console.log(data.token)
-            }
-        })
-        .catch(err=>console.error(err.message))
-    
+      phone,
+      password: pass,
+    };
+    fetch("http://localhost:5000/login", {
+      method: "put",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          return toast.error("invalid credential", { duration: 5000 });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data.token) {
+          toast.success("loggedin Successfully");
+          localStorage.setItem("ecommerce-token", data.token);
+          setStatus(true);
+        }
+      })
+      .catch((err) => console.error(err.message));
   };
+  useEffect(() => {
+    if (status) {
+      navigate(from, { replace: true });
+    }
+  }, [status]);
+
   return (
     <div className="grid place-content-center min-h-screen h-full">
       <div className="flex flex-col border border-slate-300 shadow-lg shadow-slate-400 max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
@@ -80,7 +82,7 @@ const Login = () => {
                   Password
                 </label>
                 <Link
-                  to="/forget-pass"
+                  
                   className="text-xs hover:underline dark:text-gray-400"
                 >
                   Forgot password?
@@ -91,7 +93,7 @@ const Login = () => {
                   type={`${isOpen ? "text" : "password"}`}
                   name="password"
                   id="password"
-                  placeholder="*****"
+                  placeholder="password..."
                   className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                 />
                 <div
