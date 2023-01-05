@@ -25,7 +25,7 @@ const ProductsCard = ({product}) => {
                 <h3 className="text-2xl font-bold leading-snug sm:pr-8">
                  {name}
                 </h3>
-                <p className="text-xl font-bold text-fuchsia-800">${price}</p>
+                <p className="text-xl font-bold text-rose-600">${price}</p>
               </div>
      
           </div>
@@ -52,7 +52,7 @@ const ProductsCard = ({product}) => {
               </Link>
               <button
                onClick={()=>handleAddToCart(product)}
-                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-fuchsia-800 transition duration-200 shadow-md md:w-auto bg-fuchsia-200 hover:bg-fuchsia-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
+                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-rose-600 transition duration-200 shadow-md md:w-auto bg-rose-200 hover:bg-rose-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
               >
                 Add to cart
               </button>

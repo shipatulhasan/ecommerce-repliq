@@ -45,13 +45,13 @@ if(!product){
         <div>
           <div className="space-y-1">
             <h3 className="text-2xl font-bold leading-snug sm:pr-8">{product?.name}</h3>
-            <p className="text-xl font-bold text-fuchsia-800">${product?.price}</p>
+            <p className="text-xl font-bold text-rose-800">${product?.price}</p>
           </div>
         </div>
         <div className="my-4 space-y-4 md:space-y-0 md:flex items-center gap-5">
         <button
                onClick={()=>handleAddToCart(product)}
-                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-fuchsia-800 transition duration-200 shadow-md md:w-auto bg-fuchsia-200 hover:bg-fuchsia-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
+                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-rose-800 transition duration-200 shadow-md md:w-auto bg-rose-200 hover:bg-rose-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
               >
                 Add to cart
               </button>

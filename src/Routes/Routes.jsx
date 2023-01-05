@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../component/ErrorPage";
+import Dashboard from "../Layouts/Dashboard/DashboardLaout";
 import Main from "../Layouts/Main";
 import Cart from "../pages/Cart/Cart";
 import CheckOut from "../pages/CheckOut/CheckOut";
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
                 element:<CheckOut />
             },
         ]
+    },
+    {
+        path:'/dashboard',
+        element:<Dashboard />
     },
     {
         path:'/login',

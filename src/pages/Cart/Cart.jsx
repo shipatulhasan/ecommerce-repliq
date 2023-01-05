@@ -60,7 +60,7 @@ const Cart = () => {
             <button
               className='px-6 py-2 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800'
             >
-              Place Order
+              Procced to checkout
             </button>
             </Link>
           </div>

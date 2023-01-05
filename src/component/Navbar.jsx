@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import brand from '../assets/brand/ecommerce-logo.png'
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import useCart from '../hooks/useCart';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const navigate = useNavigate()
     const {setStatus} = useContext(AuthContext)
     const handlelogout = ()=>{
       localStorage.removeItem("ecommerce-token")
@@ -18,8 +16,8 @@ const Navbar = () => {
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-fuchsia-200 " : 'border-opacity-0'
-              } text-fuchsia-800 px-3 py-1 list-none lg:mr-2  font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
+                isActive ? "bg-red-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2  font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
             >
               Shop
             </li>
@@ -30,8 +28,8 @@ const Navbar = () => {
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-fuchsia-200 " : 'border-opacity-0'
-              } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
+                isActive ? "bg-red-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
             >
               Cart
             
@@ -39,33 +37,22 @@ const Navbar = () => {
             
           )}
       </NavLink>
-      <NavLink to='/'>
+      <NavLink to='/dashboard'>
       {({ isActive }) => (
             <li
               className={`${
-                isActive ? "bg-fuchsia-200 " : 'border-opacity-0'
-              } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
+                isActive ? "bg-red-200 " : 'border-opacity-0'
+              } text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300  lg:mt-0`}
             >
               Dashboard
             </li>
           )}
       </NavLink>
-{/*     
-      <NavLink onClick={handleLogout}>
-      {({ isActive }) => (
-            <li
-              className={`${
-                isActive ? " border-opacity-0" : 'border-opacity-0'
-              } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300 hover:bg-opacity-20 border-fuchsia-500 lg:mt-0`}
-            >
-              Logout
-            </li>
-          )}
-      </NavLink>  */}
+
  
           <li
           onClick={handlelogout}
-            className={`text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300 hover:bg-opacity-20 border-fuchsia-500 lg:mt-0 hover:cursor-pointer`}
+            className={`text-rose-600 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-red-300 hover:bg-opacity-20 border-red-500 lg:mt-0 hover:cursor-pointer`}
           >
             Logout
           </li>
