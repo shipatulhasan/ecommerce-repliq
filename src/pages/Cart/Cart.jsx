@@ -1,28 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartItem from '../../../../../React-projects/smart-home-complete/src/components/CartItem';
+import toast from 'react-hot-toast'
 import useCart from '../../hooks/useCart';
+import { removeFromDb } from '../../utility/fakeDb';
+import CartItem from './CartItem';
 
 const Cart = () => {
     const {cart,setCart} = useCart()
     let total = 0
-    const handleRemoveItem = id => {
-        const remaining = cart.filter(product => product.id !== id)
+    const handleRemoveItem = (product) => {
+      const permission = window.confirm(`would you like to remove ${product.name}`)
+      if(permission){
+
+        const remaining = cart.filter(p => p.id !== product.id)
         setCart(remaining)
-        removeFromDb(id)
-        toast.warning('Product Removed!', { autoClose: 500 })
+        removeFromDb(product.id)
+        toast.success('Product Removed!', { autoClose: 500 })
+      }
+     
       }
       for(const product of cart){
           total = total + (product?.price*product?.quantity)
       }
+      const checkout = {handleRemoveItem,total} 
     
     return (
-        <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900'>
-        <div className='flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 '>
+        <div className='flex min-h-screen justify-center  text-gray-900'>
+        <div className='w-full max-w-screen-xl p-6 space-y-4 sm:p-10 '>
           <h2 className='text-xl font-semibold'>
             {cart.length ? 'Review Cart Items' : 'Cart is EMPTY!'}
           </h2>
-          <ul className='flex flex-col divide-y divide-gray-700'>
+          <ul className='divide-y divide-gray-300'>
             {cart.map(product => (
               <CartItem
                 key={product.id}
@@ -33,7 +41,7 @@ const Cart = () => {
           </ul>
           <div className='space-y-1 text-right'>
             <p>
-              Total amount: <span className='font-semibold'>total$</span>
+              Total amount: <span className='font-semibold'>${total}</span>
             </p>
             <p className='text-sm text-gray-400'>
               Not including taxes and shipping costs
@@ -48,13 +56,13 @@ const Cart = () => {
                 Back <span className='sr-only sm:not-sr-only'>to shop</span>
               </button>
             </Link>
+            <Link to='/checkout' state={{total}} >
             <button
-            //   onClick={orderHandler}
-              type='button'
               className='px-6 py-2 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800'
             >
               Place Order
             </button>
+            </Link>
           </div>
         </div>
       </div>

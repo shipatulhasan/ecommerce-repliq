@@ -4,7 +4,6 @@ import brand from '../assets/brand/ecommerce-logo.png'
 import useCart from '../hooks/useCart';
 
 const Navbar = () => {
-    const {cart} = useCart()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuList = <>
     <NavLink to='/shop'>
@@ -24,12 +23,9 @@ const Navbar = () => {
             <li
               className={`${
                 isActive ? "bg-fuchsia-200 " : 'border-opacity-0'
-              } relative text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
+              } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300  lg:mt-0`}
             >
               Cart
-             
-             <p className='absolute bottom-6 right-[-3px] z-10 rounded-full bg-fuchsia-200 w-5 h-5 text-sm grid place-content-center'>
-               {cart?.length?cart.length:0}</p>
       
             </li>
             

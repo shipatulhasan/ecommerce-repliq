@@ -1,13 +1,13 @@
 import React from 'react'
 
 const CartItem = ({ product, handleRemoveItem }) => {
-  const { id, name, price, quantity, picture } = product
+  const { id, name, price, quantity, image } = product
   return (
     <li className='flex flex-col py-6 sm:flex-row sm:justify-between'>
       <div className='flex w-full space-x-2 sm:space-x-4'>
         <img
           className='flex-shrink-0 object-cover w-20 h-20 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500'
-          src={picture}
+          src={image}
           alt='Polaroid camera'
         />
         <div className='flex flex-col justify-between w-full pb-4'>
@@ -21,13 +21,14 @@ const CartItem = ({ product, handleRemoveItem }) => {
             <div className='text-right'>
               <p className='text-lg font-semibold'>{price}$</p>
               <p className='text-sm text-gray-600'>
-                Total: {price * quantity}$
+                Total: ${price * quantity}
               </p>
             </div>
           </div>
-          <div className='flex text-sm divide-x'>
+          {
+            handleRemoveItem && <div className='flex text-sm divide-x'>
             <button
-              onClick={() => handleRemoveItem(id)}
+              onClick={() => handleRemoveItem(product)}
               type='button'
               className='flex items-center px-2 py-1 pl-0 space-x-1'
             >
@@ -45,6 +46,8 @@ const CartItem = ({ product, handleRemoveItem }) => {
               <span>Remove</span>
             </button>
           </div>
+          }
+          
         </div>
       </div>
     </li>
