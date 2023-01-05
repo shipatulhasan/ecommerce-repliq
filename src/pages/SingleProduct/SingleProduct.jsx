@@ -26,7 +26,7 @@ if(!product){
   return <ErrorPage />
 }
   return (
-    <div className="max-w-screen-lg mx-auto space-y-5">
+    <div className="max-w-screen-lg mx-auto space-y-5 py-20">
 
     <div className=" grid gap-10 lg:grid-cols-2 items-center p-5">
       <div>
@@ -51,7 +51,7 @@ if(!product){
         <div className="my-4 space-y-4 md:space-y-0 md:flex items-center gap-5">
         <button
                onClick={()=>handleAddToCart(product)}
-                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-rose-800 transition duration-200 shadow-md md:w-auto bg-rose-200 hover:bg-rose-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
+                className="px-5 py-2 text-sm font-bold rounded-full tracking-wide text-rose-600 transition duration-200 shadow-md md:w-auto bg-rose-200 hover:bg-rose-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer"
               >
                 Add to cart
               </button>

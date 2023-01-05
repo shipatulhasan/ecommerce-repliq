@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import {Outlet} from 'react-router-dom'
 
-const Dashboard = () => {
+const DashboardLayout = () => {
     return (
         <div className="flex flex-no-wrap">
             <div className='md:w-64 relative'>
@@ -17,7 +17,7 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardLayout;
 
 
 

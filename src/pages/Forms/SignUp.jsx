@@ -63,10 +63,15 @@ const SignUp = () => {
             </div>
             <div className="space-y-2">
                 <div>
-                    <button type="submit" className='px-6 py-2 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800'>Sign up</button>
+                <button
+                type="submit"
+                className="px-4 py-1 border font-semibold rounded-full hover:bg-rose-400 bg-rose-200 text-rose-600"
+              >
+                Sign up
+              </button>
                 </div>
-                <p className="px-6 text-sm text-center dark:text-gray-400">Already have an account ?
-                    <Link to="/login" className="hover:underline text-fuchsia-800 font-bold">Sign in</Link>.
+                <p className="p-4 text-sm text-center dark:text-gray-400">Already have an account ?
+                    <Link to="/login" className="hover:underline text-rose-600 font-bold">Sign in</Link>.
                 </p>
             </div>
         </form>

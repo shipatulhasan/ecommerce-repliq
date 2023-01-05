@@ -51,14 +51,14 @@ const Cart = () => {
             <Link to='/shop'>
               <button
                 type='button'
-                className='px-6 py-2 border rounded-full border-cyan-400'
+                className='px-5 py-2 text-sm tracking-wide text-cyan-800 rounded-full font-bold transition duration-200  shadow-md md:w-auto bg-cyan-200 hover:bg-cyan-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer'
               >
                 Back <span className='sr-only sm:not-sr-only'>to shop</span>
               </button>
             </Link>
             <Link to='/checkout' state={{total}} >
             <button
-              className='px-6 py-2 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800'
+              className='px-5 py-2 text-sm font-bold rounded-full tracking-wide text-rose-600 transition duration-200 shadow-md md:w-auto bg-rose-200 hover:bg-rose-300 focus:shadow-outline focus:outline-none capitalize hover:cursor-pointer'
             >
               Procced to checkout
             </button>

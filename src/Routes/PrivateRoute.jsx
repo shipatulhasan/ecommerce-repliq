@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Loader from '../component/Spinner/Loader';
 
 const PrivateRoute = ({children}) => {
     const {status,isLoading} = useContext(AuthContext)
@@ -8,7 +9,7 @@ const PrivateRoute = ({children}) => {
     let location = useLocation()
 
     if(isLoading){
-        return <h2>Loading...</h2>
+        return <Loader height={'min-h-[60vh]'} />
     }
     if(status===true){
         return children

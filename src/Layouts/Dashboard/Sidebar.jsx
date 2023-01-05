@@ -11,11 +11,11 @@ const Sidebar = () => {
 
   let menuList = (
     <>
-      <NavLink to="/dashboard/my-orders">
+      <NavLink to="/dashboard/add-user">
         {({ isActive }) => (
           <li
             className={`${
-              isActive ? "bg-rose-600 text-white" : " text-red-600"
+              isActive ? "bg-rose-600 text-white" : " text-rose-600"
             } w-full hover:bg-rose-600 hover:text-white px-2 py-1 rounded transition-colors duration-150 ease-linear font-semibold list-none mb-2 capitalize`}
           >
             <div className="flex gap-2 items-center">
@@ -51,7 +51,7 @@ const Sidebar = () => {
             </span>
           </Link>
           <Link to="/dashboard" className="flex items-center justify-center gap-0 mt-2">
-            <div className="w-16 h-16 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 overflow-hidden border-2 ring-rose-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
               <img
                 src={profile}
                 className="object-cover w-full h-full"
@@ -73,13 +73,13 @@ const Sidebar = () => {
         <div>
           <div className="my-3">
             <ul className="px-8 mt-10 w-full flex items-center justify-start gap-10">
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaFacebookF />
               </li>
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaWhatsapp />
               </li>
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaLinkedinIn />
               </li>
             </ul>
@@ -87,7 +87,7 @@ const Sidebar = () => {
 
           <p
             onClick={handleLogOut}
-            className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-red-600"
+            className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-rose-600"
           >
             <svg
               className="w-5 h-5 mx-1"
@@ -114,7 +114,7 @@ const Sidebar = () => {
         id="mobile-nav"
       >
         <div
-          className="h-10 w-10 bg-red-600 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer"
+          className="h-10 w-10 bg-rose-600 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer"
           id="mobile-toggler"
           onClick={() => setShow(!show)}
         >
@@ -148,7 +148,7 @@ const Sidebar = () => {
           </Link>
           <div className="mt-2">
           <Link to="/dashboard" className="flex items-center justify-center gap-0 mt-2">
-            <div className="w-16 h-16 overflow-hidden border-2 ring-red-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-16 h-16 overflow-hidden border-2 ring-rose-600 ring-2 m-1 rounded-full flex items-center justify-center flex-shrink-0">
               <img
                 src={profile}
                 className="object-cover w-full h-full"
@@ -171,13 +171,13 @@ const Sidebar = () => {
         <div>
           <div className="my-3">
             <ul className="px-8 mt-10 w-full flex items-center justify-start gap-10">
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaFacebookF />
               </li>
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaWhatsapp />
               </li>
-              <li className="cursor-pointer text-red-600 pt-5 pb-3">
+              <li className="cursor-pointer text-rose-600 pt-5 pb-3">
                 <FaLinkedinIn />
               </li>
             </ul>
@@ -185,7 +185,7 @@ const Sidebar = () => {
 
           <p
             onClick={handleLogOut}
-            className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-red-600"
+            className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-rose-600"
           >
             <svg
               className="w-5 h-5 mx-1"

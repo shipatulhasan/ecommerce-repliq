@@ -109,7 +109,7 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="px-4 py-1 border font-semibold rounded-full hover:bg-cyan-400 bg-cyan-200 text-gray-800"
+                className="px-4 py-1 border font-semibold rounded-full hover:bg-rose-400 bg-rose-200 text-rose-600"
               >
                 Sign in
               </button>
@@ -118,7 +118,7 @@ const Login = () => {
               Don't have an account yet?
               <Link
                 to="/signup"
-                className="hover:underline text-cyan-600 font-bold"
+                className="hover:underline text-rose-600 font-bold"
               >
                 Sign up
               </Link>
