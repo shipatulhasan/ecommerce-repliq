@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import brand from '../assets/brand/ecommerce-logo.png'
+import { AuthContext } from '../AuthProvider/AuthProvider';
 import useCart from '../hooks/useCart';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const navigate = useNavigate()
+    const {setStatus} = useContext(AuthContext)
+    const handlelogout = ()=>{
+      localStorage.removeItem("ecommerce-token")
+      setStatus(false)
+    }
 
     const menuList = <>
     <NavLink to='/shop'>
@@ -55,17 +62,14 @@ const Navbar = () => {
             </li>
           )}
       </NavLink>  */}
-      <NavLink to='/login'>
-    {({ isActive }) => (
+ 
           <li
-            className={`${
-              isActive ? "bg-fuchsia-200 " : 'border-opacity-0'
-            } text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300 hover:bg-opacity-20 border-fuchsia-500 lg:mt-0`}
+          onClick={handlelogout}
+            className={`text-fuchsia-800 px-3 py-1 list-none lg:mr-2 mt-2 font-bold transition-colors duration-150 transform rounded-full hover:bg-fuchsia-300 hover:bg-opacity-20 border-fuchsia-500 lg:mt-0 hover:cursor-pointer`}
           >
-            Login
+            Logout
           </li>
-        )}
-    </NavLink>
+   
 
 
     </>

@@ -1,15 +1,51 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {setStatus} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+  console.log(from)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const phone = form.phone.value;
     const pass = form.password.value;
-    console.log(phone, pass);
+    const user = {
+        phone,password:pass
+    }
+    fetch('http://localhost:5000/login',{
+            method:'put',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(user)
+
+        })
+        .then(res=>{
+            if(res.status===400){
+                return toast.error('invalid credential',{duration:5000})
+            }
+            return res.json()
+        })
+        .then(data=>{
+          navigate(from, { replace: true });
+          toast.success('loggedin Successfully')
+          setStatus(true)
+          if(data.token){
+              localStorage.setItem('ecommerce-token',data.token)
+              console.log(data.token)
+            }
+        })
+        .catch(err=>console.error(err.message))
+    
   };
   return (
     <div className="grid place-content-center min-h-screen h-full">

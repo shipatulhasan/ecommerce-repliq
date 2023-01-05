@@ -24,7 +24,7 @@ const SignUp = () => {
         })
         .then(res=>{
             if(res.status===302){
-                return toast.error('email already exist',{duration:5000})
+                return toast.error('user already exist',{duration:5000})
             }
             return res.json()
         })
