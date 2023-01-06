@@ -25,7 +25,8 @@ Documentation Link -> [Link](https://reactrouter.com/en/main/start/overview)
 ## Resources & Credits
 Tailwind Components -> 
 [Mamba UI](https://www.mambaui.com/)
-[Kitwind](https://kitwind.io/products/kometa/components)
+[TUIK](https://tailwinduikit.com/components)
 
 ## Other Resources
 Icon -> [ReactIcon](https://react-icons.github.io/)
+Phone number Input -> [React-phone-number-input](https://www.npmjs.com/package/react-phone-number-input)
