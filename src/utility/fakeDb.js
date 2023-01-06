@@ -1,9 +1,8 @@
 // get cart form local storage
-
 const getCart = () => {
   const storedCart = localStorage.getItem("shopping-cart");
   let shoppingCart = {};
-  if (shoppingCart) {
+  if (storedCart) {
     shoppingCart = JSON.parse(storedCart);
   }
   return shoppingCart;
@@ -33,8 +32,12 @@ const removeFromDb = (id) => {
 
 // romve full cart from localstorage
 
-const resetDb = ()=>{
-    localStorage.removeItem('shopping-cart')
+const resetDb =()=>{
+  const storedCart = getCart()
+  if(storedCart){
+    localStorage.removeItem("shopping-cart")
+    return
+  }
 }
 
 export { addToDb, getCart, removeFromDb,resetDb };

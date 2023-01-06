@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import brand from '../assets/brand/ecommerce-logo.png'
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { CartContext } from '../Layouts/Main';
+import { resetDb } from '../utility/fakeDb';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -10,7 +11,7 @@ const Navbar = () => {
     const [cart] = useContext(CartContext)
     const handlelogout = ()=>{
       localStorage.removeItem("ecommerce-token")
-      localStorage.removeItem("shopping-cart")
+      resetDb()
       setStatus(false)
     }
 

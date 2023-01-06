@@ -1,27 +1,29 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Form from "../../component/Form";
 
 const SignUp = ({ adduser }) => {
   const navigate = useNavigate();
+  const [value, setValue] = useState()
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const phone = form.phone.value;
-
     const pass = form.password.value;
     const user = {
-      phone,
-      password: pass,
-      status: true,
+      phone:value,
+      password: pass
     };
 
     axios
       .post("/register", user)
       .then((res) => {
         if (res.data.acknowledged) {
+            if(adduser){
+                toast.success('create user successfully')
+                return
+            }
           navigate("/login");
         }
       })
@@ -49,7 +51,7 @@ const SignUp = ({ adduser }) => {
   }
   return (
     <div className="grid place-content-center min-h-screen h-full">
-      <Form myForm={myForm} handleSubmit={handleSubmit} />
+      <Form myForm={myForm} handleSubmit={handleSubmit} value={value} setValue={setValue}/>
     </div>
   );
 };

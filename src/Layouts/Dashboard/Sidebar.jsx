@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import brand from "../../assets/brand/ecommerce-logo.png";
 import profile from "../../assets/brand/Profile.png";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import {AiOutlineUserAdd} from 'react-icons/ai'
 import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { resetDb } from "../../utility/fakeDb";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
+  const {setStatus} = useContext(AuthContext)
+  const handlelogout = ()=>{
+    localStorage.removeItem("ecommerce-token")
+    resetDb()
+    setStatus(false)
+  }
 
   let menuList = (
     <>
@@ -86,7 +94,7 @@ const Sidebar = () => {
           </div>
 
           <p
-            onClick={handleLogOut}
+            onClick={handlelogout}
             className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-rose-600"
           >
             <svg
@@ -191,7 +199,7 @@ const Sidebar = () => {
           </div>
 
           <p
-            onClick={handleLogOut}
+            onClick={handlelogout}
             className="flex items-center p-3 text-sm text-white capitalize transition-colors duration-300 hover:cursor-pointer transform bg-rose-600"
           >
             <svg
