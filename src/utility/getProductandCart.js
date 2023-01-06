@@ -3,14 +3,14 @@ import { getCart } from './fakeDb';
 
 
 export const productAndCartData = async()=>{
-    const res = await axios.get('products.json')
-    const products = await res.data
-
+    const res = await fetch('products.json')
+    const products = await res.json()
+// fetch product from json
     const savedCart = getCart()
     const initialCart = []
     for(const id in savedCart){
 
-        // get the product form localstorage
+        // get the specific product form localstorage through id
 
         const foundProduct = products.find(p=>p.id===id)
         if(foundProduct){

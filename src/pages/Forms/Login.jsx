@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Form from "../../component/Form";
+import axios from "axios";
 
 const Login = () => {
   const { status, setStatus } = useContext(AuthContext);
@@ -20,27 +21,21 @@ const Login = () => {
       phone,
       password: pass,
     };
-    fetch("http://localhost:5000/login", {
-      method: "put",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
+    axios
+      .post("/login", user)
       .then((res) => {
-        if (res.status === 400) {
-          return toast.error("invalid credential", { duration: 5000 });
-        }
-        return res.json();
+          if (res.data.token) {
+            toast.success("loggedin Successfully");
+            localStorage.setItem("ecommerce-token", res.data.token);
+            setStatus(true);
+          }
       })
-      .then((data) => {
-        if (data.token) {
-          toast.success("loggedin Successfully");
-          localStorage.setItem("ecommerce-token", data.token);
-          setStatus(true);
+      .catch((error) => {
+        
+        if (error.request.status === 400) {
+          toast.error("invalid credential", { duration: 2000 });
         }
-      })
-      .catch((err) => console.error(err.message));
+      });
   };
   useEffect(() => {
     if (status) {

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext()
 const AuthProvider = ({children}) => {
@@ -6,29 +7,27 @@ const AuthProvider = ({children}) => {
     const token = localStorage.getItem('ecommerce-token')
 
     useEffect(()=>{
-        fetch('http://localhost:5000/auth',{
-            headers:{
-                authorization:`Bearer ${token}`,
-            }
-        })
+        axios.get('/auth',{headers:{
+            authorization:`Bearer ${token}`,
+        }})
         .then(res=>{
-            if(res.status===401 ||res.status===403 ){
-                setStatus(false)
-                setIsLoading(false)
-                return 
-            }
-            return res.json()
-        })
-        .then(data=>{
-            if(data?.status){
+            if(res.data.status){
                 setStatus(true)
                 setIsLoading(false)
             }
         })
+        .catch(error=>{
+            // console.log(error.response)
+            if(error.response.status===403 || error.response.status===403){
+                setStatus(false)
+                setIsLoading(false)
+            }
+        })
+        
     },[])
  
     const authInfo = {status,isLoading,setStatus}
-    console.log(status)
+    
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
