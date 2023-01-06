@@ -15,7 +15,7 @@ const Dashboard = () => {
         },
         {
             title:'View products',
-            subtitle:'totla product 9',
+            subtitle:'total product 9',
             icon:<TbBrandProducthunt/>
         },
     ]
