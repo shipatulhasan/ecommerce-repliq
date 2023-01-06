@@ -8,6 +8,7 @@ import axios from "axios";
 const Login = () => {
   const { status, setStatus } = useContext(AuthContext);
   const [value, setValue] = useState()
+  const [loading,setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,6 +16,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     const form = e.target;
     const pass = form.password.value;
     const user = {
@@ -28,11 +30,13 @@ const Login = () => {
           toast.success("loggedin Successfully");
           localStorage.setItem("ecommerce-token", res.data.token);
           setStatus(true);
+          setLoading(false)
         }
       })
       .catch((error) => {
         if (error.request.status === 400) {
           toast.error("invalid credential", { duration: 2000 });
+          setLoading(false)
         }
       });
   };
@@ -52,7 +56,7 @@ const Login = () => {
 
   return (
     <div className="grid place-content-center min-h-screen h-full">
-      <Form myForm={myForm} handleSubmit={handleSubmit} value={value} setValue={setValue} />
+      <Form myForm={myForm} handleSubmit={handleSubmit} value={value} setValue={setValue} loading={loading} />
     </div>
   );
 };

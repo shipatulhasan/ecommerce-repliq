@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import PhoneInput from 'react-phone-number-input'
+import LoaderText from './Spinner/LoderText'
 
-const Form = ({ myForm, handleSubmit,value,setValue }) => {
+const Form = ({ myForm, handleSubmit,value,setValue,loading }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -57,7 +58,9 @@ const Form = ({ myForm, handleSubmit,value,setValue }) => {
               type="submit"
               className="px-4 py-1 border font-semibold rounded-full hover:bg-rose-400 bg-rose-200 text-rose-600"
             >
-              {myForm.buttonText}
+             {
+               loading ?<LoaderText /> : `${myForm.buttonText}`
+             } 
             </button>
           </div>
           {myForm.footerText && (

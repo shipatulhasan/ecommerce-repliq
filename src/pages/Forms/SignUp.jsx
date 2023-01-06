@@ -7,8 +7,10 @@ import Form from "../../component/Form";
 const SignUp = ({ adduser }) => {
   const navigate = useNavigate();
   const [value, setValue] = useState()
+  const [loading,setLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     const form = e.target;
     const pass = form.password.value;
     const user = {
@@ -20,6 +22,7 @@ const SignUp = ({ adduser }) => {
       .post("/register", user)
       .then((res) => {
         if (res.data.acknowledged) {
+          setLoading(false)
             if(adduser){
                 toast.success('create user successfully')
                 return
@@ -30,6 +33,7 @@ const SignUp = ({ adduser }) => {
       .catch((error) => {
         if (error.request.status === 302) {
           toast.error("user already exist", { duration: 2000 });
+          setLoading(false)
         }
       });
   };
@@ -51,7 +55,7 @@ const SignUp = ({ adduser }) => {
   }
   return (
     <div className="grid place-content-center min-h-screen h-full">
-      <Form myForm={myForm} handleSubmit={handleSubmit} value={value} setValue={setValue}/>
+      <Form myForm={myForm} handleSubmit={handleSubmit} value={value} setValue={setValue} loading={loading} />
     </div>
   );
 };

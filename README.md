@@ -9,10 +9,11 @@ Hosted in Netlify -> [Click to Buy](https://clicktobuytask.netlify.app/)
 
 ## Features
 1. To create this web app I used the most popular js library React js. 
-4. Using Tainwind css as a css framework.
+2. Using Tainwind css as a css framework.
+3. Axios
 4. Mongodb as database.
-4. Node js Express js for backend.
-5. For the security I also implement JWT(json web token).
+5. Node js Express js for backend.
+6. For the security I also implement JWT(json web token).
 
 ## Context API
 
