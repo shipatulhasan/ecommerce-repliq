@@ -7,6 +7,7 @@ import { CartContext } from '../../Layouts/Main';
 
 const Cart = () => {
     const [cart,setCart] = useContext(CartContext)
+    console.log(cart)
     let total = 0
     const handleRemoveItem = (product) => {
       const permission = window.confirm(`would you like to remove ${product.name}`)
@@ -20,7 +21,7 @@ const Cart = () => {
      
       }
       for(const product of cart){
-          total = total + (product?.price * product?.quantity)
+          total = total + (product.price * product.quantity)
       }
     
     return (

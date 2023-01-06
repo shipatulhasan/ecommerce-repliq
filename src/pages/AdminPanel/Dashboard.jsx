@@ -21,10 +21,9 @@ const Dashboard = () => {
     ]
   return (
     <div className="flex flex-col justify-between  ">
-      <h2 className="text-3xl md:text-5xl  font-bold uppercase py-2">
+      <h2 className="text-3xl md:text-5xl  font-bold uppercase py-2 border-b-4 border-black">
         <span className="text-rose-600 ">Welcome </span>Md. Shipatul Hasan
       </h2>
-      <div className="bg-gradient-to-r from-rose-500 via-cyan-500 to-pink-500 p-[2px]" />
       {/* box */}
 
 

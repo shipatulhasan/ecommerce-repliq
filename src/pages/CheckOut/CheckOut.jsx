@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
-import useCart from '../../hooks/useCart';
+import { CartContext } from '../../Layouts/Main';
+import { resetDb } from '../../utility/fakeDb';
 import CartItem from '../Cart/CartItem';
 
 const CheckOut = () => {
-    const {cart} = useCart()
+    const [cart,setCart] = useContext(CartContext)
     const {state} = useLocation()
-    console.log({state})
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target
         toast.success("Your order has been successfully placed");
+        resetDb()
+        setCart([])
         form.reset()
       };
     return (
