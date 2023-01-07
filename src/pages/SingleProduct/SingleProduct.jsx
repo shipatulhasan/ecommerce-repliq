@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ErrorPage from "../../component/ErrorPage";
@@ -6,16 +5,19 @@ import useCart from "../../hooks/useCart";
 
 const SingleProduct = () => {
   const [imgLoading, setImgLoading] = useState(false);
-  const [products, setProducts] = useState([]);
   const { handleAddToCart } = useCart()
   const [isLoading, setIsLoading] = useState(true);
+  const [products,setProducts] = useState([])
 
   const { id } = useParams();
   useEffect(() => {
-    axios.get("products.json").then((res) => {
-      setProducts(res?.data);
+    fetch("products.json")
+    .then(res=>res.json())
+    .then(data=>{
+      setProducts(data);
       setIsLoading(false);
-    });
+    })
+  
   }, []);
   if(isLoading){
     return 
@@ -46,6 +48,12 @@ if(!product){
           <div className="space-y-1">
             <h3 className="text-2xl font-bold leading-snug sm:pr-8">{product?.name}</h3>
             <p className="text-xl font-bold text-rose-800">${product?.price}</p>
+            <div className=" py-3 text-justify">
+          <h2 className="text-lg font-bold ">Short Description</h2>
+          <hr className=" border-gray-300 my-3 " />
+
+          <p className="text-sm text-gray-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, eum quibusdam. Deleniti, nemo. Incidunt commodi nesciunt illum ad velit vero in veniam aspernatur ullam vitae minus beatae neque, magni eveniet.</p>
+        </div>
           </div>
         </div>
         <div className="my-4 space-y-4 md:space-y-0 md:flex items-center gap-5">
